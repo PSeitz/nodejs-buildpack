@@ -6,10 +6,10 @@ CACHE_DIR=$2
 DEPS_DIR=$3
 DEPS_IDX=$4
 
-print $BUILD_DIR
-print $CACHE_DIR
-print $DEPS_DIR
-print $DEPS_IDX
+echo $BUILD_DIR
+echo $CACHE_DIR
+echo $DEPS_DIR
+echo $DEPS_IDX
 
 toolchain=${RUST_TOOLCHAIN:-"stable"}
 verbosity=${RUSTUP_VERBOSE:+"-v"}
