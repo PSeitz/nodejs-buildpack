@@ -3,22 +3,6 @@ set -euo pipefail
 
 BUILD_DIR=$1
 CACHE_DIR=$2
-
-# Get our args for rustup-init in order
-toolchain=${RUST_TOOLCHAIN:-"stable"}
-verbosity=${RUSTUP_VERBOSE:+"-v"}
-custom_args=${RUSTUP_CUSTOM:-""}
-rustup_args="${custom_args:-"${verbosity:-""} --default-toolchain $toolchain"}"
-
-# Install Rust toolchain
-curl https://sh.rustup.rs -sSf | sh -s -- -y ${rustup_args}
-
-# Make sure .cargo/bin is on the path
-path_to_cargo="$HOME/.cargo/bin/"
-export PATH=$path_to_cargo:$PATH
-echo "PRINTING PATH"
-echo $PATH
-
 export BUILDPACK_DIR=`dirname $(readlink -f ${BASH_SOURCE%/*})`
 export DEPS_DIR="$BUILD_DIR/.cloudfoundry"
 mkdir -p "$DEPS_DIR/0"
